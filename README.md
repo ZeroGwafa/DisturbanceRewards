@@ -1,6 +1,6 @@
 # DisturbanceRewards
 
-Tracks Necromancy ritual disturbances and their drops via the chat window. Lightly modified from ZeroGwafa's Seren Spirit tracker.
+Tracks Necromancy ritual disturbances and their drops via the chat window. Idea by Calliphone, code re-vamp by ZeroGwafa
 
 ## Installation:
 
