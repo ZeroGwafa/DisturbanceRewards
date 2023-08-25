@@ -84,16 +84,87 @@ window.setTimeout(function () {
       checkAnnounce(getItem);
       showItems();
     }
+	else if (chat.indexOf("You successfully deactivate") > -1) {
+      let getItem = {
+        item: "Corrupt Glyphs",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
+	
+	else if (chat.indexOf("You expel the") > -1) {
+      let getItem = {
+        item: "Sparkling Glyph",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
+	
+	else if (chat.indexOf("You sever the") > -1) {
+      let getItem = {
+        item: "Shambling Horror",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
+	
+	else if (chat.indexOf("You dismiss the") > -1) {
+      let getItem = {
+        item: "Wandering Soul",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
+	
+	else if (chat.indexOf("You banish the") > -1) {
+      let getItem = {
+        item: "Soul Storm",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
+	
+	else if (chat.indexOf("You finish siphoning") > -1) {
+      let getItem = {
+        item: "Defile",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    }
   }
 
   function showItems() {
     $(".itemList").empty();
     if (localStorage.getItem("serenTotal") === "total") {
-      $(".itemList").append(`<li class="list-group-item header" data-show="history" title="Click to show History">Seren Item Totals</li>`);
+      $(".itemList").append(`<li class="list-group-item header" data-show="history" title="Click to show History">Reward Item Totals</li>`);
       let total = getTotal();
       Object.keys(total).sort().forEach(item => $(".itemList").append(`<li class="list-group-item">${item}: ${total[item]}</li>`))
     } else {
-      $(".itemList").append(`<li class="list-group-item header" data-show="total" title="Click to show Totals">Seren Item History</li>`);
+      $(".itemList").append(`<li class="list-group-item header" data-show="total" title="Click to show Totals">Reward Item History</li>`);
       saveData.slice().reverse().map(item => {
         $(".itemList").append(`<li class="list-group-item" title="${new Date(item.time).toLocaleString()}">${item.item}</li>`)
       })
