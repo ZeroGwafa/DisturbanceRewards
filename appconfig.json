@@ -1,5 +1,5 @@
 {
-  "appName": "Disturbance Reward Tracker",
+  "appName": "Disturbance Rewards",
   "description": "Tracks necromancy ritual disturbances and their rewards.",
   "appUrl": "./index.html",
   "configUrl": "./appconfig.json",
