@@ -3,7 +3,7 @@ A1lib.identifyApp("appconfig.json");
 
 window.setTimeout(function () {
 
-  const appColor = A1lib.mixColor(0, 255, 255);
+  const appColor = A1lib.mixColor(111, 4, 246);
 
   // Set Chat reader
   let reader = new Chatbox.default();
@@ -16,10 +16,10 @@ window.setTimeout(function () {
   };
 
   //Setup localStorage variable.
-  if (!localStorage.serenData) {
-    localStorage.setItem("serenData", JSON.stringify([]))
+  if (!localStorage.disturbanceTrackerData) {
+    localStorage.setItem("disturbanceTrackerData", JSON.stringify([]))
   }
-  let saveData = JSON.parse(localStorage.serenData);
+  let saveData = JSON.parse(localStorage.disturbanceTrackerData);
 
   //Find all visible chatboxes on screen
   $(".itemList").append("<li class='list-group-item'>Searching for chatboxes</li>");
@@ -34,8 +34,8 @@ window.setTimeout(function () {
         $(".chat").append(`<option value=${i}>Chat ${i}</option>`);
       });
 
-      if (localStorage.serenChat) {
-        reader.pos.mainbox = reader.pos.boxes[localStorage.serenChat];
+      if (localStorage.disturbanceChat) {
+        reader.pos.mainbox = reader.pos.boxes[localStorage.disturbanceChat];
       } else {
         //If multiple boxes are found, this will select the first, which should be the top-most chat box on the screen.
         reader.pos.mainbox = reader.pos.boxes[0];
@@ -63,6 +63,7 @@ window.setTimeout(function () {
       );
     } catch { }
   }
+  var lastEvent = null;
 
   //Reading and parsing info from the chatbox.
   function readChatbox() {
@@ -74,116 +75,92 @@ window.setTimeout(function () {
     }
 
     if (chat.indexOf("The following reward is added to the ritual chest:") > -1) {
-      let getItem = {
-        item: chat.match(/\d+ x [A-Za-z\s-'()1-4]+/)[0].trim(),
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+      console.log({ chat, type: "reward" });
+      addItem(chat.match(/\d+ x [A-Za-z\s-'()1-4]+/)[0].trim());
     };
-	if (chat.indexOf("Some corrupt glyphs") > -1) {
-      let getItem = {
-        item: "1 x Corrupt Glyphs",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("Some corrupt glyphs") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Corrupt Glyphs");
+        lastEvent = null;
+      }
     };
-	
-	if (chat.indexOf("A cloud of sparkles") > -1) {
-      let getItem = {
-        item: "1 x Sparkling Glyph",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("A cloud of sparkles") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Sparkling Glyph");
+        lastEvent = chat;
+      }
     };
-	
-	if (chat.indexOf("A shambling horror") > -1) {
-      let getItem = {
-        item: "1 x Shambling Horror",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("A shambling horror") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Shambling Horror");
+        lastEvent = chat;
+      }
     };
-	
-	if (chat.indexOf("A wandering soul") > -1) {
-      let getItem = {
-        item: "1 x Wandering Soul",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("A wandering soul") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Wandering Soul");
+        lastEvent = chat;
+      }
     };
-	
-	if (chat.indexOf("A storm of souls") > -1) {
-      let getItem = {
-        item: "1 x Soul Storm",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("A storm of souls") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Soul Storm");
+        lastEvent = chat;
+      }
     };
-	
-	if (chat.indexOf("A large pool of miasma") > -1) {
-      let getItem = {
-        item: "1 x Defile",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("A large pool of miasma") > -1) {
+      console.log({ chat, type: "event" });
+      if (!isDupe(chat, lastEvent)) {
+        addItem("1 x Defile");
+        lastEvent = chat;
+      }
     };
-	
-	if (chat.indexOf("You complete") > -1) {
-      let getItem = {
-        item: "1 x Ritual Completion",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("You complete the ritual") > -1) {
+      console.log({ chat, type: "event" });
+      addItem("1 x Ritual Completion");
     };
-	
-	if (chat.indexOf("The following reward is added to your backpack") > -1) {
-      let getItem = {
-        item: "1 x Tome",
-        time: new Date()
-      };
-      console.log(getItem);
-      saveData.push(getItem);
-      localStorage.setItem("serenData", JSON.stringify(saveData));
-      checkAnnounce(getItem);
-      showItems();
+
+    if (chat.indexOf("The following reward is added to your backpack") > -1) {
+      console.log({ chat, type: "reward" });
+      addItem("1 x Tome");
     };
+  }
+
+  function isDupe(chat, lastEvent) {
+    if (chat.indexOf(lastEvent) > -1) {
+      console.log(chat.indexOf(lastEvent))
+      lastEvent = null;
+      return true;
+    }
+    return false;
+  }
+
+  function addItem(item) {
+    let getItem = {
+      item: item,
+      time: new Date()
+    };
+    console.log(getItem);
+    saveData.push(getItem);
+    localStorage.setItem("disturbanceTrackerData", JSON.stringify(saveData));
+    showItems();
   }
 
   function showItems() {
     $(".itemList").empty();
-    if (localStorage.getItem("serenTotal") === "total") {
+    if (localStorage.getItem("disturbanceTotal") === "total") {
       $(".itemList").append(`<li class="list-group-item header" data-show="history" title="Click to show History">Reward Item Totals</li>`);
       let total = getTotal();
       Object.keys(total).sort().forEach(item => $(".itemList").append(`<li class="list-group-item">${item}: ${total[item]}</li>`))
@@ -192,22 +169,6 @@ window.setTimeout(function () {
       saveData.slice().reverse().map(item => {
         $(".itemList").append(`<li class="list-group-item" title="${new Date(item.time).toLocaleString()}">${item.item}</li>`)
       })
-    }
-  }
-
-  function checkAnnounce(getItem) {
-    if (localStorage.serenAnnounce) {
-      fetch(localStorage.getItem("serenAnnounce"),
-        {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: "Zero's Seren Tracker",
-            content: `${new Date(getItem.time).toLocaleString()}: Received - ${getItem.item}`
-          })
-        })
     }
   }
 
@@ -226,14 +187,14 @@ window.setTimeout(function () {
     $(".chat").change(function () {
       reader.pos.mainbox = reader.pos.boxes[$(this).val()];
       showSelectedChat(reader.pos);
-      localStorage.setItem("serenChat", $(this).val());
+      localStorage.setItem("disturbanceChat", $(this).val());
       $(this).val("");
     });
 
     $(".export").click(function () {
       var str, fileName;
       //If totals is checked, export totals
-      if (localStorage.getItem("serenTotal") === "total") {
+      if (localStorage.getItem("disturbanceTotal") === "total") {
         str = "Qty,Item\n";
         let total = getTotal();
         Object.keys(total).sort().forEach(item => str = `${str}${total[item]},${item}\n`);
@@ -268,14 +229,14 @@ window.setTimeout(function () {
     });
 
     $(".clear").click(function () {
-      localStorage.removeItem("serenData");
-      localStorage.removeItem("serenChat");
-      localStorage.removeItem("serenTotal");
+      localStorage.removeItem("disturbanceTrackerData");
+      localStorage.removeItem("disturbanceChat");
+      localStorage.removeItem("disturbanceTotal");
       location.reload();
     })
 
     $(document).on("click", ".header", function () {
-      localStorage.setItem("serenTotal", $(this).data("show")); showItems()
+      localStorage.setItem("disturbanceTotal", $(this).data("show")); showItems()
     })
   });
 }, 50)
