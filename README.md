@@ -1,16 +1,16 @@
-# SerenTracker
+# DisturbanceRewards
 
-Tracks Seren Spirit drops gained via the chat window.
+Tracks Necromancy ritual disturbances and their drops via the chat window.
 
 ## Installation:
 
 Install by copying this either copy pasting the following link in your browser.
 
-alt1://addapp/https://zerogwafa.github.io/SerenTracker/appconfig.json
+alt1://addapp/https://calliphone.github.io/DisturbanceRewards/appconfig.json
 
 Or, by going to the following link in the Alt1 Browser
 
-https://zerogwafa.github.io/SerenTracker/
+https://calliphone.github.io/DisturbanceRewards/
 
 ## Instructions:
 
