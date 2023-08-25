@@ -83,8 +83,8 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
-	else if (chat.indexOf("You successfully deactivate") > -1) {
+    };
+	if (chat.indexOf("You successfully deactivate") > -1) {
       let getItem = {
         item: "Corrupt Glyphs",
         time: new Date()
@@ -94,9 +94,9 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
 	
-	else if (chat.indexOf("You expel the") > -1) {
+	if (chat.indexOf("You expel the") > -1) {
       let getItem = {
         item: "Sparkling Glyph",
         time: new Date()
@@ -106,9 +106,9 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
 	
-	else if (chat.indexOf("You sever the") > -1) {
+	if (chat.indexOf("You sever the") > -1) {
       let getItem = {
         item: "Shambling Horror",
         time: new Date()
@@ -118,9 +118,9 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
 	
-	else if (chat.indexOf("You dismiss the") > -1) {
+	if (chat.indexOf("You dismiss the") > -1) {
       let getItem = {
         item: "Wandering Soul",
         time: new Date()
@@ -130,9 +130,9 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
 	
-	else if (chat.indexOf("You banish the") > -1) {
+	if (chat.indexOf("You banish the") > -1) {
       let getItem = {
         item: "Soul Storm",
         time: new Date()
@@ -142,9 +142,9 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
 	
-	else if (chat.indexOf("You finish siphoning") > -1) {
+	if (chat.indexOf("You finish siphoning") > -1) {
       let getItem = {
         item: "Defile",
         time: new Date()
@@ -154,7 +154,19 @@ window.setTimeout(function () {
       localStorage.setItem("serenData", JSON.stringify(saveData));
       checkAnnounce(getItem);
       showItems();
-    }
+    };
+	
+	if (chat.indexOf("You complete") > -1) {
+      let getItem = {
+        item: "Ritual Completion",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    };
   }
 
   function showItems() {
