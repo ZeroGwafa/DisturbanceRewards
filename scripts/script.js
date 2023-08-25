@@ -86,7 +86,7 @@ window.setTimeout(function () {
     };
 	if (chat.indexOf("Some corrupt glyphs") > -1) {
       let getItem = {
-        item: "Corrupt Glyphs",
+        item: "1 x Corrupt Glyphs",
         time: new Date()
       };
       console.log(getItem);
@@ -98,7 +98,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("A cloud of sparkles") > -1) {
       let getItem = {
-        item: "Sparkling Glyph",
+        item: "1 x Sparkling Glyph",
         time: new Date()
       };
       console.log(getItem);
@@ -110,7 +110,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("A shambling horror") > -1) {
       let getItem = {
-        item: "Shambling Horror",
+        item: "1 x Shambling Horror",
         time: new Date()
       };
       console.log(getItem);
@@ -122,7 +122,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("A wandering soul") > -1) {
       let getItem = {
-        item: "Wandering Soul",
+        item: "1 x Wandering Soul",
         time: new Date()
       };
       console.log(getItem);
@@ -134,7 +134,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("A storm of souls") > -1) {
       let getItem = {
-        item: "Soul Storm",
+        item: "1 x Soul Storm",
         time: new Date()
       };
       console.log(getItem);
@@ -146,7 +146,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("A large pool of miasma") > -1) {
       let getItem = {
-        item: "Defile",
+        item: "1 x Defile",
         time: new Date()
       };
       console.log(getItem);
@@ -158,7 +158,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("You complete") > -1) {
       let getItem = {
-        item: "Ritual Completion",
+        item: "1 x Ritual Completion",
         time: new Date()
       };
       console.log(getItem);
@@ -170,7 +170,7 @@ window.setTimeout(function () {
 	
 	if (chat.indexOf("The following reward is added to your backpack") > -1) {
       let getItem = {
-        item: "Tome",
+        item: "1 x Tome",
         time: new Date()
       };
       console.log(getItem);
