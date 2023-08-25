@@ -84,7 +84,7 @@ window.setTimeout(function () {
       checkAnnounce(getItem);
       showItems();
     };
-	if (chat.indexOf("You successfully deactivate") > -1) {
+	if (chat.indexOf("Some corrupt glyphs") > -1) {
       let getItem = {
         item: "Corrupt Glyphs",
         time: new Date()
@@ -96,7 +96,7 @@ window.setTimeout(function () {
       showItems();
     };
 	
-	if (chat.indexOf("You expel the") > -1) {
+	if (chat.indexOf("A cloud of sparkles") > -1) {
       let getItem = {
         item: "Sparkling Glyph",
         time: new Date()
@@ -108,7 +108,7 @@ window.setTimeout(function () {
       showItems();
     };
 	
-	if (chat.indexOf("You sever the") > -1) {
+	if (chat.indexOf("A shambling horror") > -1) {
       let getItem = {
         item: "Shambling Horror",
         time: new Date()
@@ -120,7 +120,7 @@ window.setTimeout(function () {
       showItems();
     };
 	
-	if (chat.indexOf("You dismiss the") > -1) {
+	if (chat.indexOf("A wandering soul") > -1) {
       let getItem = {
         item: "Wandering Soul",
         time: new Date()
@@ -132,7 +132,7 @@ window.setTimeout(function () {
       showItems();
     };
 	
-	if (chat.indexOf("You banish the") > -1) {
+	if (chat.indexOf("A storm of souls") > -1) {
       let getItem = {
         item: "Soul Storm",
         time: new Date()
@@ -144,7 +144,7 @@ window.setTimeout(function () {
       showItems();
     };
 	
-	if (chat.indexOf("You finish siphoning") > -1) {
+	if (chat.indexOf("A large pool of miasma") > -1) {
       let getItem = {
         item: "Defile",
         time: new Date()
@@ -159,6 +159,18 @@ window.setTimeout(function () {
 	if (chat.indexOf("You complete") > -1) {
       let getItem = {
         item: "Ritual Completion",
+        time: new Date()
+      };
+      console.log(getItem);
+      saveData.push(getItem);
+      localStorage.setItem("serenData", JSON.stringify(saveData));
+      checkAnnounce(getItem);
+      showItems();
+    };
+	
+	if (chat.indexOf("The following reward is added to your backpack") > -1) {
+      let getItem = {
+        item: "Tome",
         time: new Date()
       };
       console.log(getItem);
