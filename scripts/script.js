@@ -9,7 +9,7 @@ window.setTimeout(function () {
   let reader = new Chatbox.default();
   reader.readargs = {
     colors: [
-      A1lib.mixColor(0, 255, 255), //Seren text color
+      A1lib.mixColor(0, 255, 0), //Ritual text color
       // A1lib.mixColor(127,169,255), //Test Chat text color
     ],
     backwards: true,
@@ -73,7 +73,7 @@ window.setTimeout(function () {
       chat += opts[a].text + " ";
     }
 
-    if (chat.indexOf("Seren spirit gifts you") > -1) {
+    if (chat.indexOf("The following reward is added to the ritual chest:") > -1) {
       let getItem = {
         item: chat.match(/\d+ x [A-Za-z\s-'()1-4]+/)[0].trim(),
         time: new Date()
