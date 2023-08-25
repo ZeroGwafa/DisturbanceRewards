@@ -237,7 +237,7 @@ window.setTimeout(function () {
         str = "Qty,Item\n";
         let total = getTotal();
         Object.keys(total).sort().forEach(item => str = `${str}${total[item]},${item}\n`);
-        fileName = "serenTotalExport.csv";
+        fileName = "rewardTotalExport.csv";
 
         //Otherwise, export list by item and time received.
       } else {
@@ -245,7 +245,7 @@ window.setTimeout(function () {
         saveData.forEach((item) => {
           str = `${str}${item.item},${new Date(item.time).toLocaleString()}\n`;
         });
-        fileName = "serenHistoryExport.csv"
+        fileName = "rewardHistoryExport.csv"
       }
       var blob = new Blob([str], { type: "text/csv;charset=utf-8;" });
       if (navigator.msSaveBlob) {
