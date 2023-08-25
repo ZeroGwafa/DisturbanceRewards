@@ -26,13 +26,13 @@ https://calliphone.github.io/DisturbanceRewards/
 
 ![menu](/readme-assets/ItemHistory.png)
 
-By default, the app will show the item history, or the list of items received from Seren Spirits, in the order of most recent at the top of the list. You can Mouse-Over each entry to see the local time and date when it was acquired.
+By default, the app will show the event history and the list of items received from disturbances, in the order of most recent at the top of the list. You can Mouse-Over each entry to see the local time and date when it was acquired.
 
-Clicking the header (Where it shows "Seren Item History") will change the display to item totals.
+Clicking the header (Where it shows "Reward Item History") will change the display to item totals.
 
 ![menu](/readme-assets/ItemTotals.png)
 
-This shows the total amount of each item acquired via Seren Spirits.
+This shows the total amount of each item acquired and the number of each event.
 
 ## Settings
 
