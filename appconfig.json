@@ -1,6 +1,6 @@
 {
-  "appName": "SerenTracker",
-  "description": "Tracks Seren Spirit Drops as they appear in the chat box.",
+  "appName": "Disturbance Reward Tracker",
+  "description": "Tracks necromancy ritual disturbances and their rewards.",
   "appUrl": "./index.html",
   "configUrl": "./appconfig.json",
   "iconUrl": "./readme-assets/icon.png",
