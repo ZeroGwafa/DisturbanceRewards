@@ -4,7 +4,7 @@ Tracks Necromancy ritual disturbances and their drops via the chat window.
 
 ## Installation:
 
-Install by copying this either copy pasting the following link in your browser.
+Install by copy pasting the following link in your browser.
 
 alt1://addapp/https://calliphone.github.io/DisturbanceRewards/appconfig.json
 
