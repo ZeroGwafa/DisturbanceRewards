@@ -6,11 +6,11 @@ Tracks Necromancy ritual disturbances and their drops via the chat window. Light
 
 Install by copy pasting the following link in your browser.
 
-alt1://addapp/https://calliphone.github.io/DisturbanceRewards/appconfig.json
+alt1://addapp/https://zerogwafa.github.io/DisturbanceRewards/appconfig.json
 
 Or, by going to the following link in the Alt1 Browser
 
-https://calliphone.github.io/DisturbanceRewards/
+https://zerogwafa.github.io/DisturbanceRewards/
 
 ## Instructions:
 
