@@ -74,15 +74,15 @@ window.setTimeout(function () {
       chat += opts[a].text + " ";
     }
 
-    if (chat.indexOf("The following reward is added to the ritual chest:") > -1) {
+    if (chat.indexOf("The following reward is added") > -1) {
       console.log({ chat, type: "reward" });
-      addItem(chat.match(/\d+ x [A-Za-z\s-'()1-4]+/)[0].trim());
+      addItem(chat.match(/\d+ x [A-Za-z\s-'()1-4]+/)[0].trim(), "reward");
     };
 
     if (chat.indexOf("Some corrupt glyphs") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Corrupt Glyphs");
+        addItem("1 x Corrupt Glyphs", "event");
         lastEvent = null;
       }
     };
@@ -90,7 +90,7 @@ window.setTimeout(function () {
     if (chat.indexOf("A cloud of sparkles") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Sparkling Glyph");
+        addItem("1 x Sparkling Glyph", "event");
         lastEvent = chat;
       }
     };
@@ -98,7 +98,7 @@ window.setTimeout(function () {
     if (chat.indexOf("A shambling horror") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Shambling Horror");
+        addItem("1 x Shambling Horror", "event");
         lastEvent = chat;
       }
     };
@@ -106,7 +106,7 @@ window.setTimeout(function () {
     if (chat.indexOf("A wandering soul") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Wandering Soul");
+        addItem("1 x Wandering Soul", "event");
         lastEvent = chat;
       }
     };
@@ -114,7 +114,7 @@ window.setTimeout(function () {
     if (chat.indexOf("A storm of souls") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Soul Storm");
+        addItem("1 x Soul Storm", "event");
         lastEvent = chat;
       }
     };
@@ -122,19 +122,19 @@ window.setTimeout(function () {
     if (chat.indexOf("A large pool of miasma") > -1) {
       console.log({ chat, type: "event" });
       if (!isDupe(chat, lastEvent)) {
-        addItem("1 x Defile");
+        addItem("1 x Defile", "event");
         lastEvent = chat;
       }
     };
 
     if (chat.indexOf("You complete the ritual") > -1) {
       console.log({ chat, type: "event" });
-      addItem("1 x Ritual Completion");
+      addItem("1 x Ritual Completion", "event");
     };
 
     if (chat.indexOf("The following reward is added to your backpack") > -1) {
       console.log({ chat, type: "reward" });
-      addItem("1 x Tome");
+      addItem("1 x Tome", "reward");
     };
   }
 
@@ -147,8 +147,9 @@ window.setTimeout(function () {
     return false;
   }
 
-  function addItem(item) {
+  function addItem(item, type) {
     let getItem = {
+      type,
       item: item,
       time: new Date()
     };
@@ -202,9 +203,9 @@ window.setTimeout(function () {
 
         //Otherwise, export list by item and time received.
       } else {
-        str = "Item,Time\n"; // column headers
+        str = "Type,Item,Time\n"; // column headers
         saveData.forEach((item) => {
-          str = `${str}${item.item},${new Date(item.time).toLocaleString()}\n`;
+          str = `${str}${item.type},${item.item},${new Date(item.time).toLocaleString()}\n`;
         });
         fileName = "rewardHistoryExport.csv"
       }
